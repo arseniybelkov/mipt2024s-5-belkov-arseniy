@@ -1,5 +1,8 @@
 # iitp-modern-cv
 IITP course on modern Computer Vision
+## 27-03-2024
+- https://www.kaggle.com/code/arseniybelkov/barcodes - каггл ноутубук с генерацией данных
+
 ## 20-03-2024
 Поставили задачу rotated rectangles detection  
 - Tasks:
