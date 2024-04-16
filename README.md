@@ -1,5 +1,7 @@
 # iitp-modern-cv
 IITP course on modern Computer Vision
+## 16-04-2024
+- https://www.kaggle.com/code/arseniybelkov/obb-detection/notebook?scriptVersionId=172346702 - модель обучается
 ## 27-03-2024
 - https://www.kaggle.com/code/arseniybelkov/barcodes - каггл ноутубук с генерацией данных (needs to be thorougly tested ofc)
 
