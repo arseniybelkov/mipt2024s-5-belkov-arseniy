@@ -1,5 +1,18 @@
 # iitp-modern-cv
 IITP course on modern Computer Vision
+## 22-04-2024
+- https://www.kaggle.com/code/arseniybelkov/obb-detection/notebook - обучение модели  
+- https://www.kaggle.com/code/arseniybelkov/obb-analysis/notebook - inference  
+Модель за 16.04 провалилась (были ошибки в создании датасета), сейчас ошибки пофикшены, модель обучилась на 1000 снимков (коды на черном фоне повернутые на разный угол).
+Кривые на валидации + фотки предиктов:
+![validation_curves](./assets/val_metrics_iter0.png)  
+![validation_curves](./assets/val_batch2_pred_iter0.jpg)  
+
+Next steps:  
+- рандомный фон + сдвиг кодов от центра (не должно усложнить тренировку, сейчас не готово, потому что надо было сильно переписать код генерации) 
+- больше 1 кода на картинке
+- прочие дисторшны (чем больше аугмов - тем больше жрем гпу, на каггле будет проблема)
+
 ## 16-04-2024
 - https://www.kaggle.com/code/arseniybelkov/obb-detection/notebook?scriptVersionId=172346702 - модель обучается  
 Взял [модель](https://docs.ultralytics.com/tasks/obb/#train) от [ultralytics](https://github.com/ultralytics/ultralytics), выбирал по принципу "легче всего запустить".
