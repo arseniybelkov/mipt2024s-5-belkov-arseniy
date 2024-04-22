@@ -8,7 +8,7 @@ IITP course on modern Computer Vision
 ![validation_curves](./assets/val_metrics_iter0.png)  
 ![validation_curves](./assets/val_batch2_pred_iter0.jpg)  
 
-Next steps:  
+Next steps (from high to low priority):  
 - рандомный фон + сдвиг кодов от центра (не должно усложнить тренировку, сейчас не готово, потому что надо было сильно переписать код генерации) 
 - больше 1 кода на картинке
 - прочие дисторшны (чем больше аугмов - тем больше жрем гпу, на каггле будет проблема)
