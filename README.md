@@ -11,11 +11,16 @@ IITP course on modern Computer Vision
 ### Model
 
 Для детекции OBB была использована модель [YOLOv8 от Ultralytics](https://docs.ultralytics.com/tasks/obb/). Модель была выбрана, т.к. ее запуск осуществлялся проще всего, минорные различия в архитектурах (наличие attention, другие виды сверток и тд) с другими моделями я считаю не самыми важными для качества.  
+Список отреджекченных моделей:  
+- https://github.com/qinr/MRDet (requires cuda compiling)
+- https://github.com/Ixiaohuihuihui/AO2-DETR (also requires cuda compiling)
+- https://www.researchgate.net/publication/377163595_HODet_A_New_Detector_for_Arbitrary-Oriented_Rectangular_Object_in_Optical_Remote_Sensing_Imagery (no code provided)
+- https://github.com/jbwang1997/OBBDetection (also requires cuda compiling)
 
 ### Dataset
 
 Датасет был сгенерирован, используя код Всеволода Плохотнюка для генерации самих баркодов. Коды были повернуты на рандомный угол и наклеены на рандомный фон. Примеры данных:  
-![real_codes_examples](./assets/finale/pic_example1.png)
+![real_codes_examples](./assets/finale/pic_example0.png)
 ![real_codes_examples](./assets/finale/pic_example1.png)  
 
 Выборка состоит из ~2000 картинок для трейна, 200 для валидации и 180 для теста.  
@@ -34,7 +39,7 @@ IITP course on modern Computer Vision
  
 Полученные метрики и предикты на тесте:  
 ![Test Metrics](./assets/finale/test_metrics.png)
-![Test Predictions](./assets/finale/test_predictions.png)
+![Test Predictions](./assets/finale/test_batch0_pred.jpg)
 
 Модель ошибается на кейсах с сильно налезшмим друг на друга кодами, но в случаех почти полного перекрытия ничего сделать скорее всего и не получиться.  
 
