@@ -1,6 +1,12 @@
 # iitp-modern-cv
 IITP course on modern Computer Vision
 ## 13-05-2024 (finale)  
+
+## Task
+Была поставлена задача обучить OBB detection модель на снимках с баркодами
+
+## Results
+
 - https://www.kaggle.com/code/arseniybelkov/more-real-barcodes/notebook - создание датасета
 - https://www.kaggle.com/code/arseniybelkov/obb-detection/notebook - обучение модели  
 - https://www.kaggle.com/code/arseniybelkov/obb-analysis/notebook - inference
