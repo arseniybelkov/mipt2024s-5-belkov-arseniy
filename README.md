@@ -1,5 +1,43 @@
 # iitp-modern-cv
 IITP course on modern Computer Vision
+## 13-05-2024 (finale)  
+- https://www.kaggle.com/code/arseniybelkov/more-real-barcodes/notebook - создание датасета
+- https://www.kaggle.com/code/arseniybelkov/obb-detection/notebook - обучение модели  
+- https://www.kaggle.com/code/arseniybelkov/obb-analysis/notebook - inference
+
+Для воспроизведения результатов надо просто зайти в ноутубк obb-detection, нажать run all. Подождать конца обучения, после чего запустить obb-analysis (перед этим лучше обновить obb-detection во вкладке Input).  
+Ноутбук с созданием датасета лучше не запускать, тк там не зафиксированы сиды и данные поменяются.  
+
+### Model
+
+Для детекции OBB была использована модель [YOLOv8 от Ultralytics](https://docs.ultralytics.com/tasks/obb/). Модель была выбрана, т.к. ее запуск осуществлялся проще всего, минорные различия в архитектурах (наличие attention, другие виды сверток и тд) с другими моделями я считаю не самыми важными для качества.  
+
+### Dataset
+
+Датасет был сгенерирован, используя код Всеволода Плохотнюка для генерации самих баркодов. Коды были повернуты на рандомный угол и наклеены на рандомный фон. Примеры данных:  
+![real_codes_examples](./assets/finale/pic_example1.png)
+![real_codes_examples](./assets/finale/pic_example1.png)  
+
+Выборка состоит из ~2000 картинок для трейна, 200 для валидации и 180 для теста.  
+
+### Loss function & Metrics
+В качестве лосс функции используется [ванильный лосс yolov8](https://arxiv.org/abs/2305.09972) (i.e. MSE между боксами + CE для классификации + DFL loss (CE между IoU)).  
+В качестве валидационных и тестовых метрик использовались следующие величины: [Dice-Score](https://en.wikipedia.org/wiki/Dice-S%C3%B8rensen_coefficient), [Recall, Precision](https://en.wikipedia.org/wiki/Precision_and_recall), [Hausdorff Distance](https://en.wikipedia.org/wiki/Hausdorff_distance).  
+Вычислялись метрики следующим образом (для одной картинки):  
+- Из модели выходил список боксов и конфиденсов.
+- Часть боксов отсеивалась по конфиденсу > 0.3.
+- Для вычисления Dice Score, Precision and Recall, все боксы заливались, тем самым мы получали бинарную маску предикта. Метрики считались между бинарной маской предикта, и полученной таким же образом бинарнйо маской таргета.
+- Для вычисления Hausdorff Distance боксы предикта и таргета превращались в контуры. Из-за того что мы не знаем соответсвия между предиктнутыми и таргетными боксами, HD вычислялась след. образом:
+  1. Для каждого target_contour находился predict_contour с наименьшей HD, без повторений predict_contour. Если кол-во предиктов было меньше чем кол-во таргетов, HD присваивалось значение 100.  
+  2. Составлялся список полученных HD
+  3. Для метрик брались min, max и mean статистики.
+ 
+Полученные метрики и предикты на тесте:  
+![Test Metrics](./assets/finale/test_metrics.png)
+![Test Predictions](./assets/finale/test_predictions.png)
+
+Модель ошибается на кейсах с сильно налезшмим друг на друга кодами, но в случаех почти полного перекрытия ничего сделать скорее всего и не получиться.  
+
 ## 22-04-2024
 - https://www.kaggle.com/code/arseniybelkov/obb-detection/notebook - обучение модели  
 - https://www.kaggle.com/code/arseniybelkov/obb-analysis/notebook - inference  
