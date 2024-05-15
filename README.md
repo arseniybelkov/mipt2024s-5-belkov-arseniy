@@ -6,7 +6,7 @@ IITP course on modern Computer Vision
 ## 13-05-2024 (finale)  
 
 ## Task
-Была поставлена задача обучить OBB detection модель на снимках с баркодами
+Была поставлена задача обучить OBB detection модель на снимках с баркодами для детекции этих самых баркодов.
 
 ## Results
 
@@ -24,7 +24,9 @@ IITP course on modern Computer Vision
 - https://github.com/qinr/MRDet (requires cuda compiling)
 - https://github.com/Ixiaohuihuihui/AO2-DETR (also requires cuda compiling)
 - https://www.researchgate.net/publication/377163595_HODet_A_New_Detector_for_Arbitrary-Oriented_Rectangular_Object_in_Optical_Remote_Sensing_Imagery (no code provided)
-- https://github.com/jbwang1997/OBBDetection (also requires cuda compiling)
+- https://github.com/jbwang1997/OBBDetection (also requires cuda compiling)  
+
+На выходе модель дает список боксов с конфиденсами, боксы в формате xyxyxyxy (координаты коробки)  
 
 ### Dataset
 
