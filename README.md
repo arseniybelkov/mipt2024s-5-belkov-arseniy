@@ -1,4 +1,7 @@
 # iitp-modern-cv
+
+Арсений Белков, М01-301
+
 IITP course on modern Computer Vision
 ## 13-05-2024 (finale)  
 
