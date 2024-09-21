@@ -96,12 +96,13 @@ IITP course on modern Computer Vision
 ![orig_picture](./assets/augms/orig.png)  
 Аугментированные:  
 
-![augm1](./assets/augms/augm1.png)  
 Раз:  
-![augm2](./assets/augms/augm2.png)  
+![augm1](./assets/augms/augm1.png)  
 Два:  
-![augm3](./assets/augms/augm3.png)  
+![augm2](./assets/augms/augm2.png)  
 Три:  
+![augm3](./assets/augms/augm3.png)  
+Метрики:  
 ![raw_exp](./assets/finale/raw_exp_rounded.png)  
 
 После этого начинаем инъекции синтетики в наши данные: 
