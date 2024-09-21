@@ -93,7 +93,7 @@ IITP course on modern Computer Vision
 На этом моменте были подобраны гиперпараметры пооптимальнее, так же были подключены аугментации для GaussianBlur и ColorJitter, RandomRotation, RandomPerspective, RandomBrightnessContrast, метрики немного подросли.  
 Примеры аугментаций:  
 Оригинальная картинка:  
-![orig_picture](./assets/augm/orig.png)  
+![orig_picture](./assets/augms/orig.png)  
 Аугментированные:  
 ![augm1](./assets/augms/augm1.png)
 ![augm2](./assets/augms/augm2.png)
