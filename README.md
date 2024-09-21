@@ -95,10 +95,14 @@ IITP course on modern Computer Vision
 Оригинальная картинка:  
 ![orig_picture](./assets/augms/orig.png)  
 Аугментированные:  
-![augm1](./assets/augms/augm1.png)
-![augm2](./assets/augms/augm2.png)
-![augm3](./assets/augms/augm3.png)
-![raw_exp](./assets/finale/raw_exp_rounded.png)
+
+![augm1](./assets/augms/augm1.png)  
+Раз:  
+![augm2](./assets/augms/augm2.png)  
+Два:  
+![augm3](./assets/augms/augm3.png)  
+Три:  
+![raw_exp](./assets/finale/raw_exp_rounded.png)  
 
 После этого начинаем инъекции синтетики в наши данные: 
 График зависимости Dice Score от % синтетики в трейне:  
