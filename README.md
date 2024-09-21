@@ -95,9 +95,9 @@ IITP course on modern Computer Vision
 Оригинальная картинка:  
 ![orig_picture](./assets/augm/orig.png)  
 Аугментированные:  
-![augm1](./assets/augm/augm1.png)
-![augm2](./assets/augm/augm2.png)
-![augm3](./assets/augm/augm3.png)
+![augm1](./assets/augms/augm1.png)
+![augm2](./assets/augms/augm2.png)
+![augm3](./assets/augms/augm3.png)
 ![raw_exp](./assets/finale/raw_exp_rounded.png)
 
 После этого начинаем инъекции синтетики в наши данные: 
