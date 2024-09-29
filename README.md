@@ -139,7 +139,40 @@ IITP course on modern Computer Vision
 Основным средством повышения качества будет дальнейшая чистка / переразметка выборки, так как придуманные мной эвристики скорее всего не вычистили все кейсы.  
 
 ### Инфраструктура
-Для обучения и подготовки данных я использовал Kaggle. После написание довольно большого кол-ва ноутбуков, средства этой платформы позволяют добавлять новые данные и перезапускать эсперименты в течении нескольких минут, платформа сама подтягивает изменения из всех залинкованных ноутбуков. Это позволяет существенно сократить время между итерациями.
+Для обучения и подготовки данных я использовал Kaggle. После написание довольно большого кол-ва ноутбуков, средства этой платформы позволяют добавлять новые данные и перезапускать эсперименты в течении нескольких минут, платформа сама подтягивает изменения из всех залинкованных ноутбуков.  Это позволяет существенно сократить время между итерациями.
+
+### Как использовать  
+В файле `src/model.py` находится API для работы с моделью. Воспользоваться им можно несколькими способами:  
+- Импортировать оттуда необходимые функции (документация по ним написана в файле)
+- Использовать напрямую через `python model.py`  
+
+CLI позволяет запустить модель на одном изображении / папке с изображениями. Краткая инструкция по работе:  
+```bash
+python model.py --help
+usage: model.py [-h] [--path PATH] [--dir DIR] [--image IMAGE] [--device {cuda,mps,cpu}]
+
+options:
+  -h, --help            show this help message and exit
+  --path PATH, -p PATH  Path to the model checkpoint.
+  --dir DIR, -d DIR     Path to directory with images.
+  --image IMAGE, -i IMAGE
+                        Path to single local image.
+  --device {cuda,mps,cpu}
+                        torch.device for inference.
+```  
+Пример:  
+Скачаем отложенный тестовый датасет по ссылке https://www.kaggle.com/datasets/arseniybelkov/mine-barcodes/data.  
+Разархивируем и получим папку `dataset` по пути `path/to/dataset`. После чего скачаем веса модели https://drive.google.com/file/d/1RW2NE5zNQzG1M4Icy44mGT-WZgg1OnVh/view?usp=sharing. Получим файл `path/to/best.pt`. Запустим модель на всей директории:  
+```bash
+python model.py -p /path/to/best.pt -d /path/to/dataset
+```  
+По итогу в папке с каждой картинкой `image_name.jpg` появится папка `image_name_predicted` в которой будет лежать картинка с предиктом и `obb.json` с координатами бокса в формате `xyxyxyxy`.  
+На всякий случай был собран Dockerfile что бы избежать проблем с окружением. Перед прогоном предикта можно сделать:  
+```bash
+docker build -t mvc:v1 .  
+docker run --name mcv -it -v /path/to/folder/with/checkpoint/:/ckpt -v /path/to/dataset/:/dataset mcv:v1  
+python model.py -p /ckpt/best.pt -d /dataset
+```
 
 ## 13-05-2024 (prefinale)  
 

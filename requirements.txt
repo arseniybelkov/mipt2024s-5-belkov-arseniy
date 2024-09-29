@@ -1,0 +1,8 @@
+ultralytics
+deli
+scikit-image
+matplotlib
+numpy
+tqdm
+pandas
+jboc
