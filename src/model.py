@@ -49,11 +49,11 @@ def main(args):
     if args.image is not None:
         image_path = Path(args.image).resolve() 
         results = predict_single_image(model, args.image)
-        _save_result(image_path, results)
+        save_result(image_path, results)
         
     elif args.dir is not None:
         for (p, results) in predinct_on_dir(model, args.dir).items():
-            _save_result(p, results)
+            save_result(p, results)
     else:
         raise ValueError("Neither option of image location was chosen.")
     
@@ -104,7 +104,7 @@ def predict(model, image: np.ndarray) -> np.ndarray:
     return model(image)[0].obb.xyxyxyxy.to("cpu").numpy()
 
 
-def _save_result(image_path, results):
+def save_result(image_path, results):
     save_dir = image_path.with_suffix("").with_name(image_path.stem + "_predicted")
     save_dir.mkdir(exist_ok=True)
     results[0].save(save_dir / "predict.jpg")

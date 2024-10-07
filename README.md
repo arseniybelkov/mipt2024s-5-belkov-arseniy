@@ -159,7 +159,29 @@ image: np.ndarray = ...
 # returns xyxyxyxy box (np.ndarray)
 obb = predict(model, image)
 ```  
+Так же есть функционал для работы с множеством изображений  
+`predict_on_dir` зовет `predict` на каждом изображении из директории.  
+Все необхожимые преобразование при этом проводятся библиотекой `ultralytics`.  
+`save_result` позволяет сохранить результат модели в виде `box.json` с obb в формате `xyxyxyxy` и так же картинку с нарисованным obb.  
+```python
+from src.model import predict_on_dir, save_result
+from utrlalytics import YOLO
+
+model = YOLO('path/to/checkpoint/')
+
+images = "path/to/folder/with/images"
+# runs image through all the necessary transforms
+results = predict_on_dir(model, images)
+
+for image_path, pred in results.items():
+    save_result(image_path, pred)
+# or
+for image_path, pred in results.items():
+    box = pred.obb
+    ...
+```  
 #### CLI
+Ровно то же что и в предыдущем примере можно сделать через CLI утилиту.  
 CLI позволяет запустить модель на одном изображении / папке с изображениями. Краткая инструкция по работе:  
 ```bash
 python model.py --help
