@@ -146,6 +146,20 @@ IITP course on modern Computer Vision
 - Импортировать оттуда необходимые функции (документация по ним написана в файле)
 - Использовать напрямую через `python model.py`  
 
+#### API
+Функция `predict` сделает все небходимые преобразования.
+```python
+from src.model import predict
+from utralytics import YOLO
+
+model = YOLO('path/to/checkpoint/')
+
+image: np.ndarray = ...
+
+# returns xyxyxyxy box (np.ndarray)
+obb = predict(model, image)
+```  
+#### CLI
 CLI позволяет запустить модель на одном изображении / папке с изображениями. Краткая инструкция по работе:  
 ```bash
 python model.py --help
