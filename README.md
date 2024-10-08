@@ -148,7 +148,7 @@ IITP course on modern Computer Vision
 
 #### API
 Функция `predict` сделает все небходимые преобразования.  
-В сниппете ниже, `conf` - список конфиденсов модели на каждой бокс из списка боксов `obb`  
+В сниппете ниже, `conf` - список конфиденсов (вероятность от 0 до 1 того насколько модель уверена в этом боксе) модели на каждой бокс из списка боксов `obb`  
 ```python
 from src.model import predict
 from utralytics import YOLO
@@ -157,7 +157,7 @@ model = YOLO('path/to/checkpoint/')
 
 image: np.ndarray = ...
 
-# returns probabilities and xyxyxyxy boxes (np.ndarray)
+# returns boxes probabilities and xyxyxyxy boxes themselves (np.ndarray)
 conf, obb = predict(model, image)
 ```  
 Так же есть функционал для работы с множеством изображений  
