@@ -147,7 +147,8 @@ IITP course on modern Computer Vision
 - Использовать напрямую через `python model.py`  
 
 #### API
-Функция `predict` сделает все небходимые преобразования.
+Функция `predict` сделает все небходимые преобразования.  
+В сниппете ниже, `conf` - список конфиденсов модели на каждой бокс из списка боксов `obb`  
 ```python
 from src.model import predict
 from utralytics import YOLO
@@ -157,7 +158,7 @@ model = YOLO('path/to/checkpoint/')
 image: np.ndarray = ...
 
 # returns xyxyxyxy box (np.ndarray)
-obb = predict(model, image)
+conf, obb = predict(model, image)
 ```  
 Так же есть функционал для работы с множеством изображений  
 `predict_on_dir` зовет `predict` на каждом изображении из директории.  
@@ -179,6 +180,13 @@ for image_path, pred in results.items():
 for image_path, pred in results.items():
     box = pred.obb
     ...
+```  
+`box.json` содержит в себе следующие данные:  
+```json
+{
+  "confidence": [conf_0, ..., conf_n],
+  "boxes": [box_0, ..., box_n],
+}
 ```  
 #### CLI
 Ровно то же что и в предыдущем примере можно сделать через CLI утилиту.  

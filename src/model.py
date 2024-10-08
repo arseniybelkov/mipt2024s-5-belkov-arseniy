@@ -101,14 +101,19 @@ def predict(model, image: np.ndarray) -> np.ndarray:
     model = YOLO(...)
     obbs = predict(model, array)
     """
-    return model(image)[0].obb.xyxyxyxy.to("cpu").numpy()
+    obb = model(image)[0].obb
+    return obb.conf.to("cpu").numpy(), obb.xyxyxyxy.to("cpu").numpy()
 
 
 def save_result(image_path, results):
     save_dir = image_path.with_suffix("").with_name(image_path.stem + "_predicted")
     save_dir.mkdir(exist_ok=True)
     results[0].save(save_dir / "predict.jpg")
-    save_json(results[0].obb.xyxyxyxy.to("cpu").tolist(), save_dir / "obb.json")
+    data = {
+        "confidence": results[0].obb.conf.to("cpu").tolist(),
+        "boxes": results[0].obb.xyxyxyxy.to("cpu").tolist(),
+    }
+    save_json(data, save_dir / "obb.json")
 
 
 if __name__ == "__main__":
