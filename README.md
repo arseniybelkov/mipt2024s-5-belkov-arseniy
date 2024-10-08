@@ -157,7 +157,7 @@ model = YOLO('path/to/checkpoint/')
 
 image: np.ndarray = ...
 
-# returns xyxyxyxy box (np.ndarray)
+# returns probabilities and xyxyxyxy boxes (np.ndarray)
 conf, obb = predict(model, image)
 ```  
 Так же есть функционал для работы с множеством изображений  
